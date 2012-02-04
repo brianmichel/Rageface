@@ -1,6 +1,6 @@
 # Rage face script
 #
-# rage <tag> - Send a rageface for a given tag, if no tag is given, one will be chosen at random
+# rage (tag) - Send a rageface for a given tag, if no tag is given, one will be chosen at random
 #
 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
@@ -27,7 +27,6 @@ module.exports = (robot) ->
 rageFacesCall = (msg, tag, cb) ->
 	encoded_tag = encodeURI tag.strip()
 	rage_faces_url = "http://ragefac.es/api/tag/" + encoded_tag
-	console.log rage_faces_url
 	msg.http(rage_faces_url)
 		.get() (err, res, body) ->
 			json_body = JSON.parse(body)
